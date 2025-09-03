@@ -1,10 +1,16 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\C_producto\ProductoController;
+
+Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified'])
+->resource('producto',ProductoController::class)
+->names('producto');
 
 Route::get('/', function () {
     return view('welcome');
 });
+
 
 Route::middleware([
     'auth:sanctum',
