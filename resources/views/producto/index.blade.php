@@ -24,13 +24,15 @@
           <p>No hay productos disponibles.</p>
         @else
           <div class="overflow-x-auto">
-            <table class="min-w-full divide-y divide-gray-200">
+            <table id="productos" class="min-w-full divide-y divide-gray-200">
               <thead class="bg-gray-50">
                 <tr>
                   <th class="px-6 py-3 text-left text-xs font-medium uppercase text-gray-500">Nombre</th>
                   <th class="px-6 py-3 text-left text-xs font-medium uppercase text-gray-500">Descripcion</th>
                   <th class="px-6 py-3 text-left text-xs font-medium uppercase text-gray-500">Precio</th>
                   <th class="px-6 py-3 text-left text-xs font-medium uppercase text-gray-500">Cantidad</th>
+                  <th class="px-6 py-3 text-left text-xs font-medium uppercase text-gray-500">Acciones</th>
+
                 </tr>
               </thead>
               <tbody class="bg-white divide-y divide-gray-200">
@@ -67,4 +69,68 @@
       </div>
     </div>
   </div>
+
+{{-- jQuery + DataTables (CDN) --}}
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.8/css/jquery.dataTables.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.2/css/buttons.dataTables.min.css">
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.8/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.4.2/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.html5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.print.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
+<script>
+$(function() {
+$('#productos').DataTable({
+pageLength: 20,
+dom: 'Bfrtip',
+
+language: {
+url: 'https://cdn.datatables.net/plug-ins/1.13.8/i18n/es-ES.json'},
+buttons: ['copy', 'csv', 'excel', 'pdf', 'print']
+});
+});
+</script>
+
+<script>
+$(document).ready(function() {
+    $('#productos').DataTable({
+        dom: 'Bfrtip',
+        buttons: [
+            {
+                extend: 'copy',
+                text: '<i class="fas fa-copy"></i> Copiar',
+                className: 'btn btn-copy'
+            },
+            {
+                extend: 'csv',
+                text: '<i class="fas fa-file-csv"></i> CSV',
+                className: 'btn btn-csv'
+            },
+            {
+                extend: 'excel',
+                text: '<i class="fas fa-file-excel"></i> Excel',
+                className: 'btn btn-excel'
+            },
+            {
+                extend: 'pdf',
+                text: '<i class="fas fa-file-pdf"></i> PDF',
+                className: 'btn btn-pdf'
+            },
+            {
+                extend: 'print',
+                text: '<i class="fas fa-print"></i> Imprimir',
+                className: 'btn btn-print'
+            }
+        ],
+        language: {
+            url: 'https://cdn.datatables.net/plug-ins/1.13.8/i18n/es-ES.json'
+        }
+    });
+});
+</script>
+
+
 </x-app-layout>
