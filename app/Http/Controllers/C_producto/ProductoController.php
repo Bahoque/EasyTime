@@ -13,7 +13,9 @@ class ProductoController extends Controller
      */
     public function index()
     {
-        $productos = Producto::all();
+        $productos = Producto::with(['inventario'])
+        ->orderBy('ID_PRODUCTO')
+        ->get();
         return view('producto.index',compact('productos'));
     }
 
@@ -22,7 +24,12 @@ class ProductoController extends Controller
      */
     public function create()
     {
-         return view('producto.create',compact('producto'));
+        // $productos =>  
+        return view('producto.create');
+
+        // $productos = producto::findOrFail($id);
+        // return view('producto.edit', compact('productos'));
+         
     }
 
     /**
@@ -46,7 +53,9 @@ class ProductoController extends Controller
      */
     public function edit(producto $producto)
     {
-        return view('producto.edit', compact('producto'));
+        $productos = producto::findOrFail($ID_PRODUCTO);
+        return view('producto.edit', compact('productos'));
+         
     }
 
     /**

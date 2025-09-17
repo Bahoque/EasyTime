@@ -105,6 +105,11 @@
                             </div>
 
                             <x-dropdown-link href="{{ route('profile.show') }}">
+                                <svg class="w-5 h-5 inline mr-2 text-blue-500" xmlns="http://www.w3.org/2000/svg" 
+                                    fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                                    d="M5.121 17.804A10.97 10.97 0 0112 15c2.21 0 4.253.642 5.879 1.804M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                                </svg>
                                 {{ __('Profile') }}
                             </x-dropdown-link>
 
@@ -121,7 +126,12 @@
                                 @csrf
 
                                 <x-dropdown-link href="{{ route('logout') }}"
-                                         @click.prevent="$root.submit();">
+                                    @click.prevent="$root.submit();">
+                                        <svg class="w-5 h-5 inline mr-2 text-blue-500" xmlns="http://www.w3.org/2000/svg" 
+                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                                            d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1m0-10V5m-4 14h10a2 2 0 002-2V7a2 2 0 00-2-2H9a2 2 0 00-2 2v4"/>
+                                        </svg>
                                     {{ __('Log Out') }}
                                 </x-dropdown-link>
                             </form>
