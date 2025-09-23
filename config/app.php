@@ -13,7 +13,10 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'EasyTime'),
+
+    'project_name' => env('PROJECT_NAME', 'EasyTime'), 
+    'version' => env('PROJECT_VERSION', '1.0.0'),
 
     /*
     |--------------------------------------------------------------------------
