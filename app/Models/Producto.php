@@ -1,24 +1,21 @@
 <?php
 
-/**
- * Created by Reliese Model.
- */
-
 namespace App\Models;
 
-use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Collection;
+use Carbon\Carbon;
 
 /**
  * Class Producto
  * 
  * @property int $ID_PRODUCTO
+ * @property string $COD_PROD
  * @property string $NOM_PROD
- * @property string $DESCRIPCION_PROD
+ * @property string|null $DESCRIPCION_PROD
  * @property string $CADUCIDAD_PROD
- * @property string $PRECIO_PROD
- * @property string $CANTIDAD_PROD
+ * @property float $PRECIO_PROD
+ * @property int $CANTIDAD_PROD
  * @property Carbon $CREATED_AT
  * @property Carbon $UPDATE_AT
  * @property int $INVENTARIO_ID_INVENTARIO
@@ -31,39 +28,45 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Producto extends Model
 {
-	protected $table = 'productos';
-	protected $primaryKey = 'ID_PRODUCTO';
-	public $timestamps = false;
+    protected $table = 'productos';
+    protected $primaryKey = 'ID_PRODUCTO';
 
-	protected $casts = [
-		'CREATED_AT' => 'datetime',
-		'UPDATE_AT' => 'datetime',
-		'INVENTARIO_ID_INVENTARIO' => 'int'
-	];
+    // Laravel no usa automáticamente CREATED_AT y UPDATE_AT porque los nombraste distinto
+    const CREATED_AT = 'CREATED_AT';
+    const UPDATED_AT = 'UPDATE_AT';
+    public $timestamps = true;
 
-	protected $fillable = [
-		'NOM_PROD',
-		'DESCRIPCION_PROD',
-		'CADUCIDAD_PROD',
-		'PRECIO_PROD',
-		'CANTIDAD_PROD',
-		'CREATED_AT',
-		'UPDATE_AT',
-		'INVENTARIO_ID_INVENTARIO'
-	];
+    protected $casts = [
+        'CREATED_AT' => 'datetime',
+        'UPDATE_AT' => 'datetime',
+        'PRECIO_PROD' => 'float',
+        'CANTIDAD_PROD' => 'int',
+        'INVENTARIO_ID_INVENTARIO' => 'int'
+    ];
 
-	public function inventario()
-	{
-		return $this->belongsTo(Inventario::class, 'INVENTARIO_ID_INVENTARIO');
-	}
+    protected $fillable = [
+        'COD_PROD',
+        'NOM_PROD',
+        'DESCRIPCION_PROD',
+        'CADUCIDAD_PROD',
+        'PRECIO_PROD',
+        'CANTIDAD_PROD',
+        'INVENTARIO_ID_INVENTARIO'
+    ];
 
-	public function detalle_pedidos()
-	{
-		return $this->hasMany(DetallePedido::class, 'PRODUCTOS_ID_PRODUCTO');
-	}
+    public function inventario()
+    {
+        return $this->belongsTo(Inventario::class, 'INVENTARIO_ID_INVENTARIO');
+    }
 
-	public function promociones()
-	{
-		return $this->hasMany(Promocione::class, 'PRODUCTOS_ID_PRODUCTO');
-	}
+    public function detalle_pedidos()
+    {
+        return $this->hasMany(DetallePedido::class, 'PRODUCTOS_ID_PRODUCTO');
+    }
+
+    public function promociones()
+    {
+        return $this->hasMany(Promocione::class, 'PRODUCTOS_ID_PRODUCTO');
+    }
 }
+

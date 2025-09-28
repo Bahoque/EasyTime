@@ -23,7 +23,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property Carbon $UPDATE_AT
  * 
  * @property Collection|Calificacion[] $calificacions
- * @property Collection|Citum[] $cita
+ * @property Collection|Cita[] $cita
  * @property Collection|Facturacion[] $facturacions
  *
  * @package App\Models
@@ -32,7 +32,10 @@ class Servicio extends Model
 {
 	protected $table = 'servicio';
 	protected $primaryKey = 'ID_SERVICIO';
+	public $incrementing = true;
 	public $timestamps = false;
+	protected $keyType = 'int';
+
 
 	protected $casts = [
 		'EST_SERV' => 'int',
@@ -55,9 +58,10 @@ class Servicio extends Model
 		return $this->hasMany(Calificacion::class, 'SERVICIO_ID_SERVICIO');
 	}
 
-	public function cita()
+	public function citas()
 	{
-		return $this->hasMany(Citum::class, 'SERVICIO_ID_SERVICIO');
+		return $this->hasMany(\App\Models\Cita::class, 'SERVICIO_ID_SERVICIO', 'ID_SERVICIO');
+
 	}
 
 	public function facturacions()
