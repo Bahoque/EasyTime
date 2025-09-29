@@ -10,7 +10,7 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class Citum
+ * Class Cita
  * 
  * @property int $ID_CITA
  * @property int $EST_CITA
@@ -25,7 +25,7 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @package App\Models
  */
-class Citum extends Model
+class Cita extends Model
 {
 	protected $table = 'cita';
 	protected $primaryKey = 'ID_CITA';

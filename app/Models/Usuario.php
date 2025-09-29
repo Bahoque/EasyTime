@@ -13,7 +13,7 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * Class Usuario
  * 
- * @property int $ID_USUARIO
+ * @property int $ID_USER
  * @property string $TIPO_DOC
  * @property string $NOM_USER
  * @property string $APE_USER
@@ -26,7 +26,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property int|null $ID_ROL_USER
  * 
  * @property Rol|null $rol
- * @property Collection|Citum[] $cita
+ * @property Collection|Cita[] $cita
  * @property Collection|Facturacion[] $facturacions
  * @property Collection|Pedido[] $pedidos
  * @property Collection|Pqr[] $pqrs
@@ -36,19 +36,21 @@ use Illuminate\Database\Eloquent\Model;
 class Usuario extends Model
 {
 	protected $table = 'usuario';
-	protected $primaryKey = 'ID_USUARIO';
+	protected $primaryKey = 'ID_USER';
 	public $timestamps = false;
 
 	protected $casts = [
 		'EST_USER' => 'int',
 		'CREATED_AT' => 'datetime',
 		'UPDATE_AT' => 'datetime',
-		'ID_ROL_USER' => 'int'
+		'ID_ROL_USER' => 'int',
+		'NUMERO_DOC' => 'string'
 	];
 
 	protected $fillable = [
 		'TIPO_DOC',
 		'NOM_USER',
+		'NUMERO_DOC',
 		'APE_USER',
 		'TEL_USER',
 		'CORREO_USER',
@@ -64,9 +66,9 @@ class Usuario extends Model
 		return $this->belongsTo(Rol::class, 'ID_ROL_USER');
 	}
 
-	public function cita()
+	public function citas()
 	{
-		return $this->hasMany(Citum::class, 'USUARIO_ID_USUARIO');
+		return $this->hasMany(Cita::class, 'USUARIO_ID_USUARIO');
 	}
 
 	public function facturacions()
