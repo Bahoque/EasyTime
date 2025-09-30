@@ -41,12 +41,11 @@
             
             <!-- Columna izquierda -->
             <div class="col-span-1 p-6 border border-gray-300 rounded-lg bg-white shadow">
-                <h2 class="text-xl font-semibold">Eslogan</h2>
-                <p class="mt-2 text-sm">Descripción de la empresa aquí.</p>
-                <p class="mt-4 text-sm font-semibold">Frases de llamado a la acción.</p>
-                <div class="mt-4">
-                    <img src="{{ asset('imagen/gif_registro.gif') }}" alt="gif señalando el botón de registro" class="w-full h-auto">
-                </div>
+
+                <p class="mt-2 text-lg font-bold">
+    Un sistema ágil y versátil para agendar citas y gestionar ventas. Optimiza la atención al cliente y el control de productos en un solo entorno intuitivo.
+</p>
+                
             </div>
 
             <!-- Columna derecha -->
@@ -76,33 +75,31 @@
 
                 <!-- Contenedor dinámico -->
                 <div class="p-6 border border-gray-300 rounded-lg bg-white shadow">
-                    
-                    <!-- Productos -->
-                    <div x-show="activeTab === 'productos'">
-                        <h3 class="font-semibold text-lg mb-4">Galería de Productos</h3>
-                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                            <div class="grid gap-4">
-                                <div><img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image.jpg" alt=""></div>
-                                <div><img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-1.jpg" alt=""></div>
-                                <div><img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-2.jpg" alt=""></div>
-                            </div>
-                            <div class="grid gap-4">
-                                <div><img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-3.jpg" alt=""></div>
-                                <div><img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-4.jpg" alt=""></div>
-                                <div><img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-5.jpg" alt=""></div>
-                            </div>
-                            <div class="grid gap-4">
-                                <div><img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-6.jpg" alt=""></div>
-                                <div><img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-7.jpg" alt=""></div>
-                                <div><img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-8.jpg" alt=""></div>
-                            </div>
-                            <div class="grid gap-4">
-                                <div><img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-9.jpg" alt=""></div>
-                                <div><img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-10.jpg" alt=""></div>
-                                <div><img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-11.jpg" alt=""></div>
-                            </div>
-                        </div>
-                    </div>
+    <!-- Productos -->
+    <div x-show="activeTab === 'productos'">
+        <h3 class="font-semibold text-lg mb-4">Galería de Productos</h3>
+        <div class="p-6 border border-gray-300 rounded-lg bg-white shadow">
+    <h3 class="font-semibold text-lg mb-4">Galería de Productos</h3>
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+        <div><img class="h-auto max-w-full rounded-lg" src="{{ asset('storage/imagen/ambientador-canela.png') }}" alt=""></div>
+        <div><img class="h-auto max-w-full rounded-lg" src="{{ asset('storage/imagen/ambientador-frutos-rojos.png') }}" alt=""></div>
+        <div><img class="h-auto max-w-full rounded-lg" src="{{ asset('storage/imagen/ambientador-madera.png') }}" alt=""></div>
+        <div><img class="h-auto max-w-full rounded-lg" src="{{ asset('storage/imagen/cera-acdc.png') }}" alt=""></div>
+        <div><img class="h-auto max-w-full rounded-lg" src="{{ asset('storage/imagen/cera-autobrillante.png') }}" alt=""></div>
+        <div><img class="h-auto max-w-full rounded-lg" src="{{ asset('storage/imagen/cera-fastcar.png') }}" alt=""></div>
+        <div><img class="h-auto max-w-full rounded-lg" src="{{ asset('storage/imagen/cera-liquida.png') }}" alt=""></div>
+        <div><img class="h-auto max-w-full rounded-lg" src="{{ asset('storage/imagen/cera-liquida2.png') }}" alt=""></div>
+        <div><img class="h-auto max-w-full rounded-lg" src="{{ asset('storage/imagen/cera-premium.png') }}" alt=""></div>
+        <div><img class="h-auto max-w-full rounded-lg" src="{{ asset('storage/imagen/crema-protectora-cuero.png') }}" alt=""></div>
+        <div><img class="h-auto max-w-full rounded-lg" src="{{ asset('storage/imagen/crema-protectora-panoramico.png') }}" alt=""></div>
+        <div><img class="h-auto max-w-full rounded-lg" src="{{ asset('storage/imagen/limpiavidrios1.png') }}" alt=""></div>
+        <div><img class="h-auto max-w-full rounded-lg" src="{{ asset('storage/imagen/limpiavidrios2.png') }}" alt=""></div>
+        <div><img class="h-auto max-w-full rounded-lg" src="{{ asset('storage/imagen/paños-microfibra20.png') }}" alt=""></div>
+        <div><img class="h-auto max-w-full rounded-lg" src="{{ asset('storage/imagen/shampoo-lavacarro.png') }}" alt=""></div>
+    </div>
+</div>
+    </div>
+</div>
 
                     <!-- Servicios (Carrusel) -->
                     <div x-show="activeTab === 'servicios'" x-cloak>
